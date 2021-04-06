@@ -14,6 +14,9 @@
 		6975F92025F1406A00C82E34 /* estudosios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6975F91E25F1406A00C82E34 /* estudosios.xcdatamodeld */; };
 		6975F92225F1406B00C82E34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6975F92125F1406B00C82E34 /* Assets.xcassets */; };
 		6975F92525F1406B00C82E34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6975F92325F1406B00C82E34 /* LaunchScreen.storyboard */; };
+		69B9522A25F16CF6004F7115 /* VoicemailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B9522925F16CF6004F7115 /* VoicemailController.swift */; };
+		69FFB43D25F147FC00E5178C /* ContatosUITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FFB43C25F147FC00E5178C /* ContatosUITableViewController.swift */; };
+		69FFB44025F14C0300E5178C /* RecentesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FFB43F25F14C0300E5178C /* RecentesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		6975F92125F1406B00C82E34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6975F92425F1406B00C82E34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6975F92625F1406B00C82E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69B9522925F16CF6004F7115 /* VoicemailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailController.swift; sourceTree = "<group>"; };
+		69FFB43C25F147FC00E5178C /* ContatosUITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContatosUITableViewController.swift; sourceTree = "<group>"; };
+		69FFB43F25F14C0300E5178C /* RecentesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,9 @@
 				6975F91725F1406A00C82E34 /* SceneDelegate.swift */,
 				6975F91925F1406A00C82E34 /* ViewController.swift */,
 				6975F91B25F1406A00C82E34 /* Main.storyboard */,
+				69B9522925F16CF6004F7115 /* VoicemailController.swift */,
+				69FFB43F25F14C0300E5178C /* RecentesViewController.swift */,
+				69FFB43C25F147FC00E5178C /* ContatosUITableViewController.swift */,
 				6975F92125F1406B00C82E34 /* Assets.xcassets */,
 				6975F92325F1406B00C82E34 /* LaunchScreen.storyboard */,
 				6975F92625F1406B00C82E34 /* Info.plist */,
@@ -142,7 +151,10 @@
 			files = (
 				6975F91A25F1406A00C82E34 /* ViewController.swift in Sources */,
 				6975F92025F1406A00C82E34 /* estudosios.xcdatamodeld in Sources */,
+				69FFB43D25F147FC00E5178C /* ContatosUITableViewController.swift in Sources */,
+				69FFB44025F14C0300E5178C /* RecentesViewController.swift in Sources */,
 				6975F91625F1406A00C82E34 /* AppDelegate.swift in Sources */,
+				69B9522A25F16CF6004F7115 /* VoicemailController.swift in Sources */,
 				6975F91825F1406A00C82E34 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
