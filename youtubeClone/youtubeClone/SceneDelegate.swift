@@ -7,6 +7,13 @@
 
 import UIKit
 
+
+extension UIColor {
+    static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
+    }
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -16,9 +23,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
+        
         let layout = UICollectionViewFlowLayout()
         window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
+        
+        UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 230, green: 32, blue: 31)
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        let statusBarBackgroundView = UIView()
+        statusBarBackgroundView.backgroundColor = .brown
+        
+        window?.addSubview(statusBarBackgroundView)
+        window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
+        window?.addConstraintsWithFormat(format: "V:|[v0(20)]", views: statusBarBackgroundView)
+        
         window?.makeKeyAndVisible()
+        
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
