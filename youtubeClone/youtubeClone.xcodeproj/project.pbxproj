@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		697F1068262612A9007D4A37 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697F1067262612A9007D4A37 /* Video.swift */; };
 		69D15DAA261C9FDB0092EFBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D15DA9261C9FDB0092EFBD /* AppDelegate.swift */; };
 		69D15DAC261C9FDB0092EFBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D15DAB261C9FDB0092EFBD /* SceneDelegate.swift */; };
 		69D15DAE261C9FDB0092EFBD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D15DAD261C9FDB0092EFBD /* HomeController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		697F1067262612A9007D4A37 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		69D15DA6261C9FDB0092EFBD /* youtubeClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = youtubeClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69D15DA9261C9FDB0092EFBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69D15DAB261C9FDB0092EFBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		697F10662626129B007D4A37 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				697F1067262612A9007D4A37 /* Video.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		69D15D9D261C9FDB0092EFBD = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		69D15DA8261C9FDB0092EFBD /* youtubeClone */ = {
 			isa = PBXGroup;
 			children = (
+				697F10662626129B007D4A37 /* Model */,
 				CCFE9377262502FA00B2FF83 /* View */,
 				CCFE937B2625035E00B2FF83 /* Controller */,
 				CCFE93712625025000B2FF83 /* Helpers */,
@@ -171,6 +182,7 @@
 				CCFE937F262504FC00B2FF83 /* MenuBar.swift in Sources */,
 				69D15DAA261C9FDB0092EFBD /* AppDelegate.swift in Sources */,
 				69D15DAC261C9FDB0092EFBD /* SceneDelegate.swift in Sources */,
+				697F1068262612A9007D4A37 /* Video.swift in Sources */,
 				CCFE93732625026100B2FF83 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
