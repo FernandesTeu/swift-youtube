@@ -25,7 +25,28 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationController?.navigationBar.isTranslucent =  false
         setUpTitleNavigationBar()
         setUpMenuBar()
+        setUpNavBarButtons()
     }
+    
+    
+    func setUpNavBarButtons() {
+        let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
+        let searchBarButtonIcon = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
+        
+        let moreImage = UIImage(named: "nav_more_icon")?.withRenderingMode(.alwaysOriginal)
+        let moreBarButtonIcon = UIBarButtonItem(image: moreImage, style: .plain, target: self, action: #selector(handleMoreButton))
+        
+        navigationItem.rightBarButtonItems = [moreBarButtonIcon, searchBarButtonIcon]
+    }
+    
+    @objc func handleSearch() {
+        print("Search")
+    }
+    
+    @objc func handleMoreButton() {
+        print("More button")
+    }
+    
     
     let menuBar: MenuBar = {
         let mb = MenuBar()
