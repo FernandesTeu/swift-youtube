@@ -27,7 +27,7 @@ class VideoCell: BaseCell {
     let thumbnailImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "adele")
+        imageView.image = #imageLiteral(resourceName: "taylor_swift_blank_space")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -43,7 +43,7 @@ class VideoCell: BaseCell {
     let userProfileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = #imageLiteral(resourceName: "adele_user_profile")
+        imageView.image = #imageLiteral(resourceName: "taylor_swift_profile")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
         return imageView
@@ -52,14 +52,14 @@ class VideoCell: BaseCell {
     let titleLabel:UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Adele - Humerland"
+        label.text = "Taylor Swift - Blank Space"
         return label
     }()
     
     let subtitleTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = "Adele on VEVO - 5,989,909 views - 3 years ago"
+        textView.text = "TaylorSwiftVEVO - 1,604,684,607 views - 2 years ago"
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
         textView.textColor = .lightGray
         return textView
