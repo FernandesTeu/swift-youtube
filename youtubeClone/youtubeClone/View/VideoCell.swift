@@ -23,11 +23,35 @@ class BaseCell: UICollectionViewCell {
 //Classe que representa o layout de cada celula da UICollectionView
 class VideoCell: BaseCell {
     
+    var video: Video? {
+        didSet {
+            
+            titleLabel.text = video?.title
+            
+            if let thumbImageName = video?.thumbnailImageName {
+                thumbnailImageView.image = UIImage(named: thumbImageName)
+            }
+            
+            if let profileImageName = video?.channel?.profileImageName {
+                userProfileImageView.image = UIImage(named: profileImageName )
+            }
+            
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            
+            if let channelName = video?.channel?.channelName, let numberOfViews = video?.numberOfViews {
+                if let numberFormaterFrom = numberFormatter.string(from: numberOfViews) {
+                    subtitleTextView.text = "\(channelName) * \(numberFormaterFrom) * 2 years ago"
+                }
+                
+            }
+        }
+    }
+    
     //imagem maior
     let thumbnailImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "adele")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -43,7 +67,6 @@ class VideoCell: BaseCell {
     let userProfileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = #imageLiteral(resourceName: "adele_user_profile")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
         return imageView
@@ -52,14 +75,12 @@ class VideoCell: BaseCell {
     let titleLabel:UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Adele - Humerland"
         return label
     }()
     
     let subtitleTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = "Adele on VEVO - 5,989,909 views - 3 years ago"
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
         textView.textColor = .lightGray
         return textView
