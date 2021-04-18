@@ -12,26 +12,74 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     //MARK:- VARIAVEIS E INICIALIZADORES
     let cellID: String =  "cellID"
     
-    var videos: [Video] = {
+//    var videos: [Video] = {
+//
+//        var channelTylor = Channel()
+//        channelTylor.channelName = "Taylor Swift Offical Channel"
+//        channelTylor.profileImageName = "taylor_swift_profile"
+//
+//        var blankSpaceVideo = Video()
+////        blankSpaceVideo.title = "Tylor Swift - Blank Space"
+//        blankSpaceVideo.thumbnailImageName = "taylor_swift_blank_space"
+//        blankSpaceVideo.channel = channelTylor
+//        blankSpaceVideo.numberOfViews = 23423423
+//
+//        var fearless = Video()
+////        fearless.title = "Tylor Swift - Fearless"
+//        fearless.thumbnailImageName = "taylor_swift_fearless"
+//        fearless.channel = channelTylor
+//        fearless.numberOfViews = 234111231234
+//
+//        return [blankSpaceVideo, fearless]
+//    }()
+    
+    var videos: [Video]?
+    
+    func fetchDataAPI() {
         
-        var channelTylor = Channel()
-        channelTylor.channelName = "Taylor Swift Offical Channel"
-        channelTylor.profileImageName = "taylor_swift_profile"
+        guard let endPoint = URL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json") else { return }
         
-        var blankSpaceVideo = Video()
-        blankSpaceVideo.title = "Tylor Swift - Blank Space"
-        blankSpaceVideo.thumbnailImageName = "taylor_swift_blank_space"
-        blankSpaceVideo.channel = channelTylor
-        blankSpaceVideo.numberOfViews = 23423423
+        let session = URLSession(configuration: .default)
         
-        var fearless = Video()
-        fearless.title = "Tylor Swift - Fearless"
-        fearless.thumbnailImageName = "taylor_swift_fearless"
-        fearless.channel = channelTylor
-        fearless.numberOfViews = 234111231234 
+        let task = session.dataTask(with: endPoint) { (data, response, error) in
+            
+            if error != nil {
+                print("Deu Ruim na chamada da API")
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                print("Server error!")
+                return
+            }
+            
+            do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                    print(json)
+                
+                    self.videos = [Video]()
+                    
+                    for dict in json as! [[String: AnyObject]] {
+                        
+                        let video = Video()
+                        video.title = dict["title"] as? String
+                        video.thumbnailImageName = dict["thumbnail_image_name"]  as? String
+                        self.videos?.append(video)
+                    }
+                
+                } catch {
+                    print("JSON error: \(error.localizedDescription)")
+                }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+                
+            
+        }
         
-        return [blankSpaceVideo, fearless]
-    }()
+        task.resume()
+        
+    }
     
     let menuBar: MenuBar = {
         let mb = MenuBar()
@@ -41,6 +89,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchDataAPI()
+        
         // Do any additional setup after loading the view.
         collectionView.backgroundColor = .white
         //registrando a classe que será utlizada para celula na collectionview
@@ -55,7 +105,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         setUpTitleNavigationBar()
         setUpMenuBar()
         setUpNavBarButtons()
+        
     }
+    
     
     
     
@@ -99,12 +151,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
    //MARK: - Funções da CollectionView
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return videos.count
+        return videos?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! VideoCell
-        cell.video = videos[indexPath.item]
+        cell.video = videos?[indexPath.item]
         return cell
     }
 
