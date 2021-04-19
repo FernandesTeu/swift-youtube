@@ -12,27 +12,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     //MARK:- VARIAVEIS E INICIALIZADORES
     let cellID: String =  "cellID"
     
-//    var videos: [Video] = {
-//
-//        var channelTylor = Channel()
-//        channelTylor.channelName = "Taylor Swift Offical Channel"
-//        channelTylor.profileImageName = "taylor_swift_profile"
-//
-//        var blankSpaceVideo = Video()
-////        blankSpaceVideo.title = "Tylor Swift - Blank Space"
-//        blankSpaceVideo.thumbnailImageName = "taylor_swift_blank_space"
-//        blankSpaceVideo.channel = channelTylor
-//        blankSpaceVideo.numberOfViews = 23423423
-//
-//        var fearless = Video()
-////        fearless.title = "Tylor Swift - Fearless"
-//        fearless.thumbnailImageName = "taylor_swift_fearless"
-//        fearless.channel = channelTylor
-//        fearless.numberOfViews = 234111231234
-//
-//        return [blankSpaceVideo, fearless]
-//    }()
-    
     var videos: [Video]?
     
     func fetchDataAPI() {
@@ -55,7 +34,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             
             do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                    print(json)
+                    
                 
                     self.videos = [Video]()
                     
@@ -64,6 +43,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                         let video = Video()
                         video.title = dict["title"] as? String
                         video.thumbnailImageName = dict["thumbnail_image_name"]  as? String
+                        
+                        let channelDictionary =  dict["channel"] as! [String: AnyObject]
+                        let channel = Channel()
+                        channel.channelName = channelDictionary["name"] as? String
+                        channel.profileImageName = channelDictionary["profile_image_name"] as? String
+                        video.channel = channel
+                        
                         self.videos?.append(video)
                     }
                 
@@ -140,13 +126,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     //MARK: - Metodos dos Botões na NavigationBar
+    
+   
+    let settingLaungh = SettingsLauncher()
+    
     @objc func handleSearch() {
         print("Search")
     }
     
     @objc func handleMoreButton() {
-        print("More button")
+        //show menu
+        settingLaungh.showSettings()
     }
+    
     
     
    //MARK: - Funções da CollectionView

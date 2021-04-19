@@ -27,10 +27,8 @@ class VideoCell: BaseCell {
         didSet {
             
             titleLabel.text = video?.title
-            
-                setupThumbnailImage()
-//                thumbnailImageView.image = UIImage(named:  (video?.thumbnailImageName)!)
-            
+            setupThumbnailImage()
+            setupThumbnailUserProfile()
             
             if let profileImageName = video?.channel?.profileImageName {
                 userProfileImageView.image = UIImage(named: profileImageName )
@@ -47,37 +45,23 @@ class VideoCell: BaseCell {
             }
         }
     }
-    
-    func setupThumbnailImage() {
-        if let thumnailImageUrl = video?.thumbnailImageName {
-            
-            let url = URL(string: thumnailImageUrl)
-            let session = URLSession(configuration: .default)
-            
-            let task = session.dataTask(with: url!) { (data, response, error) in
-                    
-                if error != nil{
-                    print(error!)
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    self.thumbnailImageView.image = UIImage(data: data!)
-                }
-                
-            }
-            
-            
-            task.resume()
-        }
-    }
+
     
     //imagem maior
-    let thumbnailImageView: UIImageView = {
-       let imageView = UIImageView()
+    let thumbnailImageView: CustomImageView = {
+       let imageView = CustomImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    let userProfileImageView: CustomImageView = {
+        let imageView = CustomImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 22
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -86,14 +70,6 @@ class VideoCell: BaseCell {
         view.backgroundColor = UIColor(red: 233/255, green: 230/255, blue: 230/255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-    }()
-    
-    let userProfileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 22
-        imageView.layer.masksToBounds = true
-        return imageView
     }()
     
     let titleLabel:UILabel = {
@@ -141,5 +117,19 @@ class VideoCell: BaseCell {
         addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 30))
         
     }
+    
+    //MARK: - FUNCTIONS
+    func setupThumbnailUserProfile() {
+        if let thumnailUserImageUrl = video?.channel?.profileImageName {
+            userProfileImageView.loadImageUsingUrlString(urlString: thumnailUserImageUrl)
+        }
+    }
+    
+    func setupThumbnailImage() {
+        if let thumnailImageUrl = video?.thumbnailImageName {
+            thumbnailImageView.loadImageUsingUrlString(urlString: thumnailImageUrl)
+        }
+    }
+
 }
 
