@@ -55,7 +55,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             
             do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                    print(json)
+                    
                 
                     self.videos = [Video]()
                     
@@ -64,6 +64,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                         let video = Video()
                         video.title = dict["title"] as? String
                         video.thumbnailImageName = dict["thumbnail_image_name"]  as? String
+                        
+                        let channelDictionary =  dict["channel"] as! [String: AnyObject]
+                        let channel = Channel()
+                        channel.channelName = channelDictionary["name"] as? String
+                        channel.profileImageName = channelDictionary["profile_image_name"] as? String
+                        video.channel = channel
+                        
                         self.videos?.append(video)
                     }
                 
