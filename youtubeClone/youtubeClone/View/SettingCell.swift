@@ -21,6 +21,7 @@ class SettingCell: BaseCell {
         let icon = UIImageView()
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.image = UIImage(named: "settings")
+        icon.contentMode = .scaleAspectFill
         
         return icon
     }()
@@ -31,9 +32,9 @@ class SettingCell: BaseCell {
         
         addSubview(nameLabel)
         addSubview(iconView)
+        
         addConstraintsWithFormat(format: "H:|[v0]|", views: nameLabel)
         addConstraintsWithFormat(format: "V:|[v0]|", views: nameLabel)
         
-        addConstraintsWithFormat(format: "H:|[v0]|", views: iconView)
     }
 }

@@ -15,13 +15,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var videos: [Video]?
     
     func fetchDataAPI() {
-        
         guard let endPoint = URL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json") else { return }
-        
         let session = URLSession(configuration: .default)
-        
         let task = session.dataTask(with: endPoint) { (data, response, error) in
-            
             if error != nil {
                 print("Deu Ruim na chamada da API")
                 return
@@ -33,38 +29,27 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             }
             
             do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                    
-                
-                    self.videos = [Video]()
-                    
-                    for dict in json as! [[String: AnyObject]] {
-                        
-                        let video = Video()
-                        video.title = dict["title"] as? String
-                        video.thumbnailImageName = dict["thumbnail_image_name"]  as? String
-                        
-                        let channelDictionary =  dict["channel"] as! [String: AnyObject]
-                        let channel = Channel()
-                        channel.channelName = channelDictionary["name"] as? String
-                        channel.profileImageName = channelDictionary["profile_image_name"] as? String
-                        video.channel = channel
-                        
-                        self.videos?.append(video)
-                    }
-                
-                } catch {
-                    print("JSON error: \(error.localizedDescription)")
+                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                self.videos = [Video]()
+                for dict in json as! [[String: AnyObject]] {
+                    let video = Video()
+                    video.title = dict["title"] as? String
+                    video.thumbnailImageName = dict["thumbnail_image_name"]  as? String
+                    let channelDictionary =  dict["channel"] as! [String: AnyObject]
+                    let channel = Channel()
+                    channel.channelName = channelDictionary["name"] as? String
+                    channel.profileImageName = channelDictionary["profile_image_name"] as? String
+                    video.channel = channel
+                    self.videos?.append(video)
                 }
+            } catch {
+                print("JSON error: \(error.localizedDescription)")
+            }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
-                
-            
         }
-        
         task.resume()
-        
     }
     
     let menuBar: MenuBar = {
@@ -86,26 +71,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         //faz o scroll acompanhar a celula da collectionview
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-        
         navigationController?.navigationBar.isTranslucent =  false
         setUpTitleNavigationBar()
         setUpMenuBar()
         setUpNavBarButtons()
-        
     }
-    
-    
-    
     
     //MARK: - SETUPS
     
     func setUpNavBarButtons() {
         let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonIcon = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
-        
         let moreImage = UIImage(named: "nav_more_icon")?.withRenderingMode(.alwaysOriginal)
         let moreBarButtonIcon = UIBarButtonItem(image: moreImage, style: .plain, target: self, action: #selector(handleMoreButton))
-        
         navigationItem.rightBarButtonItems = [moreBarButtonIcon, searchBarButtonIcon]
     }
     
@@ -120,14 +98,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         titleLabel.text = "Home"
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize:20)
-        
         navigationItem.titleView = titleLabel
-        
     }
     
     //MARK: - Metodos dos Botões na NavigationBar
-    
-   
     let settingLaungh = SettingsLauncher()
     
     @objc func handleSearch() {
@@ -138,8 +112,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         //show menu
         settingLaungh.showSettings()
     }
-    
-    
     
    //MARK: - Funções da CollectionView
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -153,10 +125,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let height = (view.frame.width - 32) * 9 / 16
         return CGSize(width: view.frame.width, height:height + 16 + 68)
     }
-    
 }
 
