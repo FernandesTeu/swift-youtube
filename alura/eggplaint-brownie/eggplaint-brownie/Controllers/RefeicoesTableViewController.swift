@@ -20,6 +20,16 @@ class RefeicoesTableViewController: UITableViewController, ViewControllerDelegat
         tableView.reloadData()
     }
     
+    @objc func mostrarDetalhes(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            let cell = gesture.view as! UITableViewCell
+            guard let indexpath = tableView.indexPath(for: cell) else { return }
+            
+            let refeicao = refeicoes[indexpath.row]
+            print("Refeição: \(refeicao.nome)")
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         refeicoes.count
     }
@@ -29,6 +39,10 @@ class RefeicoesTableViewController: UITableViewController, ViewControllerDelegat
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         let ref = refeicoes[indexPath.row]
         cell.textLabel?.text = ref.nome
+        
+        // usar o long press na celula da tableview
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(mostrarDetalhes(_:)))
+        cell.addGestureRecognizer(longPress)
         return cell
     }
     
