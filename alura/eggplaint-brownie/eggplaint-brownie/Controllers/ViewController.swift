@@ -50,8 +50,21 @@ class ViewController: UIViewController {
         if let valueFeliz = Int(felicidade) {
             //let objRefeicao = Refeicao(nome: nome, felicidade: valueFeliz)
             let objRefeicao = Refeicao(nome: nome, felicidade: valueFeliz, itens: itemSelecionado)
-            delegate?.addRefeicao(objRefeicao)
-            navigationController?.popViewController(animated: true)
+            
+            if itemSelecionado.count == 0 {
+                let alerta = UIAlertController(title: "Itens", message: "Você não incluiu nenhum item na refeição!", preferredStyle: .alert)
+                let btnOk = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                
+                alerta.addAction(btnOk)
+                present(alerta, animated: true) {
+                    return
+                }
+            }else {
+                delegate?.addRefeicao(objRefeicao)
+                print("dentro do OK")
+                navigationController?.popViewController(animated: true)
+            }
+                
         }else{
             print("erro ao criar uma refeição")
         }

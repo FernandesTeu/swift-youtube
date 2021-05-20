@@ -24,9 +24,10 @@ class RefeicoesTableViewController: UITableViewController, ViewControllerDelegat
         if gesture.state == .began {
             let cell = gesture.view as! UITableViewCell
             guard let indexpath = tableView.indexPath(for: cell) else { return }
-            
             let refeicao = refeicoes[indexpath.row]
-            print("Refeição: \(refeicao.nome)")
+            let alerta = UIAlertController(title: refeicao.nome, message: refeicao.detalhes(), preferredStyle: .alert)
+            alerta.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alerta, animated: true, completion: nil)
         }
     }
     
