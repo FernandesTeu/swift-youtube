@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     // MARK: - IBOulet
     @IBOutlet weak var txtNome: UITextField?
     @IBOutlet weak var txtFelicidade: UITextField?
-    @IBOutlet weak var tableViewItens: UITableView!
+    @IBOutlet weak var tableViewItens: UITableView?
     
     var items: [Item] = []
     
@@ -30,8 +30,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewItens.dataSource = self
-        tableViewItens.delegate = self
+        tableViewItens?.dataSource = self
+        tableViewItens?.delegate = self
         
         let addItem = UIBarButtonItem(title: "adicionar", style: .plain , target: self, action: #selector(self.addItem))
         navigationItem.rightBarButtonItem = addItem
@@ -42,35 +42,39 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(AddItemViewController, animated: true)
     }
    
-    // MARK: - IBActions
-    @IBAction func adicionar(_ sender: Any) {
-        guard let nome = txtNome?.text else { return }
-        guard let felicidade = txtFelicidade?.text else { return }
-        
-        if let valueFeliz = Int(felicidade) {
-            //let objRefeicao = Refeicao(nome: nome, felicidade: valueFeliz)
-            let objRefeicao = Refeicao(nome: nome, felicidade: valueFeliz, itens: itemSelecionado)
-            
-            if itemSelecionado.count == 0 {
-                let alerta = UIAlertController(title: "Itens", message: "Você não incluiu nenhum item na refeição!", preferredStyle: .alert)
-                let btnOk = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                
-                alerta.addAction(btnOk)
-                present(alerta, animated: true) {
-                    return
-                }
-            }else {
-                delegate?.addRefeicao(objRefeicao)
-                print("dentro do OK")
-                navigationController?.popViewController(animated: true)
-            }
-                
-        }else{
-            print("erro ao criar uma refeição")
+    private func recuperaRefeicaoDoFormulario() -> Refeicao? {
+        guard let nome = txtNome?.text else {
+            return nil
         }
+        
+        guard let felicidade = txtFelicidade?.text else {
+            return nil
+        }
+        
+        guard let valueFelicidade = Int(felicidade) else {
+            return nil
+        }
+        
+        if itemSelecionado.count == 0 {
+            return nil
+        }
+        
+        let objRefeicao = Refeicao(nome: nome, felicidade: valueFelicidade, itens: itemSelecionado)
+        return objRefeicao
+            
     }
     
-    
+    // MARK: - IBActions
+    @IBAction func adicionar(_ sender: Any) {
+        if let objRefeicao = recuperaRefeicaoDoFormulario() {
+            delegate?.addRefeicao(objRefeicao)
+            navigationController?.popViewController(animated: true)
+        }else{
+            Alerta(controller: self).exibe(mensagem: "Erro ao recuperar refeicao")
+            return
+        }
+        
+    }
 }
 
 // MARK: - Extensions
@@ -107,7 +111,7 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: AdicionaItensDelegate {
     func addItens(_ item: Item) {
         items.append(item)
-        tableViewItens.reloadData()
+        tableViewItens?.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
