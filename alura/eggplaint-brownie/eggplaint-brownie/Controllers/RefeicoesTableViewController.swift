@@ -15,8 +15,10 @@ class RefeicoesTableViewController: UITableViewController, ViewControllerDelegat
         super.viewDidLoad()
     }
 
-    func addRefeicao(_ refeicao: Refeicao) {
+    internal func addRefeicao(_ refeicao: Refeicao) {
         refeicoes.append(refeicao)
+        let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
         tableView.reloadData()
     }
     
@@ -24,13 +26,14 @@ class RefeicoesTableViewController: UITableViewController, ViewControllerDelegat
         if gesture.state == .began {
             let cell = gesture.view as! UITableViewCell
             guard let indexpath = tableView.indexPath(for: cell) else { return }
-            let refeicao = refeicoes[indexpath.row]
-            let alerta = UIAlertController(title: refeicao.nome, message: refeicao.detalhes(), preferredStyle: .alert)
-            alerta.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            present(alerta, animated: true, completion: nil)
+            let refeicaoSelecionada = refeicoes[indexpath.row]
+            RemoveRefeicaoViewController(controller: self).removeRefeicao(refeicaoSelecionada) { (alert) in
+                self.refeicoes.remove(at: indexpath.row)
+                self.tableView.reloadData()
+            }
         }
     }
-    
+   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         refeicoes.count
     }
