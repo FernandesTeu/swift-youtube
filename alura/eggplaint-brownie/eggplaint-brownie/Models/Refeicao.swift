@@ -11,12 +11,21 @@ class Refeicao: NSObject {
 
     var nome:String
     var felicidade: Int
-    var Itens: Array<Item> = []
+    var itens: Array<Item> = []
     
     init(nome:String, felicidade:Int, itens: [Item] = []) {
         self.nome = nome
         self.felicidade = felicidade
-        self.Itens = itens
+        self.itens = itens
+    }
+    
+    func detalhes() -> String {
+        var mensagem = "Felicidade: \(felicidade) \n"
+        for item in itens {
+            mensagem += ",\(item.nome) - Calorias: \(item.calorias)"
+        }
+
+        return mensagem
     }
     
 }

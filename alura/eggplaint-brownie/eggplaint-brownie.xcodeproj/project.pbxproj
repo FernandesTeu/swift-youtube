@@ -14,6 +14,8 @@
 		69073E0C2652C0B000886778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69073E0B2652C0B000886778 /* Assets.xcassets */; };
 		69073E0F2652C0B000886778 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69073E0D2652C0B000886778 /* LaunchScreen.storyboard */; };
 		695C73F126553FCD005E0655 /* RefeicoesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C73F026553FCD005E0655 /* RefeicoesTableViewController.swift */; };
+		69B534B52655902200E806AA /* AdicionaItensViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B534B32655902200E806AA /* AdicionaItensViewController.swift */; };
+		69B534B62655902200E806AA /* AdicionaItensViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69B534B42655902200E806AA /* AdicionaItensViewController.xib */; };
 		69C8680A26544C83005DE4D1 /* Refeicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C8680926544C83005DE4D1 /* Refeicao.swift */; };
 		69C8680D26544CE4005DE4D1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C8680C26544CE4005DE4D1 /* Item.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +30,8 @@
 		69073E0E2652C0B000886778 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		69073E102652C0B000886778 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		695C73F026553FCD005E0655 /* RefeicoesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicoesTableViewController.swift; sourceTree = "<group>"; };
+		69B534B32655902200E806AA /* AdicionaItensViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionaItensViewController.swift; sourceTree = "<group>"; };
+		69B534B42655902200E806AA /* AdicionaItensViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdicionaItensViewController.xib; sourceTree = "<group>"; };
 		69C8680926544C83005DE4D1 /* Refeicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refeicao.swift; sourceTree = "<group>"; };
 		69C8680C26544CE4005DE4D1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,16 +66,24 @@
 		69073E012652C0AF00886778 /* eggplaint-brownie */ = {
 			isa = PBXGroup;
 			children = (
-				69073E022652C0AF00886778 /* AppDelegate.swift */,
+				69B534B82655903300E806AA /* Delegates */,
 				69C8680F26544D97005DE4D1 /* Models */,
 				69C8681026544DA5005DE4D1 /* Controllers */,
-				69073E042652C0AF00886778 /* SceneDelegate.swift */,
 				69C8681126544DCD005DE4D1 /* Views */,
 				69073E0B2652C0B000886778 /* Assets.xcassets */,
 				69073E0D2652C0B000886778 /* LaunchScreen.storyboard */,
 				69073E102652C0B000886778 /* Info.plist */,
 			);
 			path = "eggplaint-brownie";
+			sourceTree = "<group>";
+		};
+		69B534B82655903300E806AA /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				69073E022652C0AF00886778 /* AppDelegate.swift */,
+				69073E042652C0AF00886778 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		69C8680F26544D97005DE4D1 /* Models */ = {
@@ -88,6 +100,7 @@
 			children = (
 				69073E062652C0AF00886778 /* ViewController.swift */,
 				695C73F026553FCD005E0655 /* RefeicoesTableViewController.swift */,
+				69B534B32655902200E806AA /* AdicionaItensViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -96,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				69073E082652C0AF00886778 /* Main.storyboard */,
+				69B534B42655902200E806AA /* AdicionaItensViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +173,7 @@
 			files = (
 				69073E0F2652C0B000886778 /* LaunchScreen.storyboard in Resources */,
 				69073E0C2652C0B000886778 /* Assets.xcassets in Resources */,
+				69B534B62655902200E806AA /* AdicionaItensViewController.xib in Resources */,
 				69073E0A2652C0AF00886778 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +190,7 @@
 				69073E032652C0AF00886778 /* AppDelegate.swift in Sources */,
 				695C73F126553FCD005E0655 /* RefeicoesTableViewController.swift in Sources */,
 				69073E052652C0AF00886778 /* SceneDelegate.swift in Sources */,
+				69B534B52655902200E806AA /* AdicionaItensViewController.swift in Sources */,
 				69C8680A26544C83005DE4D1 /* Refeicao.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
