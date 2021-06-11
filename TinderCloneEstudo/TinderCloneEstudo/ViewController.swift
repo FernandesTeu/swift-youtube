@@ -20,6 +20,27 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(card)
+        
+        let gestureCard = UIPanGestureRecognizer()
+        gestureCard.addTarget(self, action: #selector(handlerCard))
+        
+        card.addGestureRecognizer(gestureCard)
+    }
+}
+
+extension ViewController {
+    
+    @objc func handlerCard(gesture: UIPanGestureRecognizer) {
+        if let card = gesture.view {
+            let point = gesture.translation(in: view)
+            card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
+            
+            if gesture.state == .ended {
+                UIView.animate(withDuration: 0.2) {
+                    card.center = self.view.center
+                }
+            }
+        }
     }
 }
 
