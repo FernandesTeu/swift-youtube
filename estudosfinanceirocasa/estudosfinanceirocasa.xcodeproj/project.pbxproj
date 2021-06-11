@@ -19,6 +19,7 @@
 		698DE29E26728ADA001D9FBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698DE29C26728ADA001D9FBE /* LaunchScreen.storyboard */; };
 		698DE2A926728ADB001D9FBE /* estudosfinanceirocasaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698DE2A826728ADB001D9FBE /* estudosfinanceirocasaTests.swift */; };
 		698DE2B426728ADB001D9FBE /* estudosfinanceirocasaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698DE2B326728ADB001D9FBE /* estudosfinanceirocasaUITests.swift */; };
+		69F000C3267399BA00251DD1 /* ResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F000C2267399BA00251DD1 /* ResumeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		698DE2AF26728ADB001D9FBE /* estudosfinanceirocasaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = estudosfinanceirocasaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		698DE2B326728ADB001D9FBE /* estudosfinanceirocasaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = estudosfinanceirocasaUITests.swift; sourceTree = "<group>"; };
 		698DE2B526728ADB001D9FBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69F000C2267399BA00251DD1 /* ResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				691BE9D92672B9710008DB51 /* FinancialForecastViewController.swift */,
 				691BE9DE2672BE3F0008DB51 /* CashFlowViewController.swift */,
 				691BE9E32672BECD0008DB51 /* IncomeFinancialViewController.swift */,
+				69F000C2267399BA00251DD1 /* ResumeViewController.swift */,
 			);
 			path = estudosfinanceirocasa;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			files = (
 				698DE29326728AD9001D9FBE /* ViewController.swift in Sources */,
 				691BE9DA2672B9710008DB51 /* FinancialForecastViewController.swift in Sources */,
+				69F000C3267399BA00251DD1 /* ResumeViewController.swift in Sources */,
 				698DE28F26728AD9001D9FBE /* AppDelegate.swift in Sources */,
 				691BE9DF2672BE3F0008DB51 /* CashFlowViewController.swift in Sources */,
 				698DE29126728AD9001D9FBE /* SceneDelegate.swift in Sources */,
