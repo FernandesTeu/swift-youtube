@@ -67,4 +67,14 @@ extension UIView {
       heightAnchor.constraint(equalToConstant: size.height).isActive = true
     }
   }
+    
+    func size(size: CGSize = .zero) {
+        if size.width != 0 {
+          widthAnchor.constraint(equalToConstant: size.width).isActive = true
+        }
+        
+        if size.height != 0 {
+          heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        }
+    }
 }
