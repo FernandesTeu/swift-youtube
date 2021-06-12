@@ -12,6 +12,8 @@
 		698270952673FC4C00EE2441 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698270942673FC4C00EE2441 /* ViewController.swift */; };
 		6982709A2673FC4E00EE2441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 698270992673FC4E00EE2441 /* Assets.xcassets */; };
 		6982709D2673FC4E00EE2441 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6982709B2673FC4E00EE2441 /* LaunchScreen.storyboard */; };
+		698270A72674102500EE2441 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698270A62674102500EE2441 /* CardView.swift */; };
+		698270AB267413F700EE2441 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698270AA267413F700EE2441 /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		698270992673FC4E00EE2441 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6982709C2673FC4E00EE2441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6982709E2673FC4E00EE2441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		698270A62674102500EE2441 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		698270AA267413F700EE2441 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +61,11 @@
 				698270902673FC4C00EE2441 /* AppDelegate.swift */,
 				698270922673FC4C00EE2441 /* SceneDelegate.swift */,
 				698270942673FC4C00EE2441 /* ViewController.swift */,
+				698270AA267413F700EE2441 /* UIView.swift */,
 				698270992673FC4E00EE2441 /* Assets.xcassets */,
 				6982709B2673FC4E00EE2441 /* LaunchScreen.storyboard */,
 				6982709E2673FC4E00EE2441 /* Info.plist */,
+				698270A62674102500EE2441 /* CardView.swift */,
 			);
 			path = TinderCloneEstudo;
 			sourceTree = "<group>";
@@ -133,6 +139,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				698270AB267413F700EE2441 /* UIView.swift in Sources */,
+				698270A72674102500EE2441 /* CardView.swift in Sources */,
 				698270952673FC4C00EE2441 /* ViewController.swift in Sources */,
 				698270912673FC4C00EE2441 /* AppDelegate.swift in Sources */,
 				698270932673FC4C00EE2441 /* SceneDelegate.swift in Sources */,
