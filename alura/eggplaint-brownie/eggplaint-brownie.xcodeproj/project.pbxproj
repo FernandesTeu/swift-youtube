@@ -18,6 +18,7 @@
 		695C73F126553FCD005E0655 /* RefeicoesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C73F026553FCD005E0655 /* RefeicoesTableViewController.swift */; };
 		69714D8D266ED9AC00D60AB6 /* RefeicaoServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69714D8C266ED9AC00D60AB6 /* RefeicaoServices.swift */; };
 		6996CDE1265C422F00DB9198 /* FileManagerRefeicoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6996CDE0265C422F00DB9198 /* FileManagerRefeicoes.swift */; };
+		69A0D74526860AB4005B4DC4 /* RefeicoesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A0D74426860AB4005B4DC4 /* RefeicoesDAO.swift */; };
 		69B534B52655902200E806AA /* AdicionaItensViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B534B32655902200E806AA /* AdicionaItensViewController.swift */; };
 		69B534B62655902200E806AA /* AdicionaItensViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69B534B42655902200E806AA /* AdicionaItensViewController.xib */; };
 		69C8680A26544C83005DE4D1 /* Refeicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C8680926544C83005DE4D1 /* Refeicao.swift */; };
@@ -38,6 +39,7 @@
 		695C73F026553FCD005E0655 /* RefeicoesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicoesTableViewController.swift; sourceTree = "<group>"; };
 		69714D8C266ED9AC00D60AB6 /* RefeicaoServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicaoServices.swift; sourceTree = "<group>"; };
 		6996CDE0265C422F00DB9198 /* FileManagerRefeicoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerRefeicoes.swift; sourceTree = "<group>"; };
+		69A0D74426860AB4005B4DC4 /* RefeicoesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicoesDAO.swift; sourceTree = "<group>"; };
 		69B534B32655902200E806AA /* AdicionaItensViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionaItensViewController.swift; sourceTree = "<group>"; };
 		69B534B42655902200E806AA /* AdicionaItensViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdicionaItensViewController.xib; sourceTree = "<group>"; };
 		69C8680926544C83005DE4D1 /* Refeicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refeicao.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				69C8680C26544CE4005DE4D1 /* Item.swift */,
 				6955F6362657F27200DA8B5F /* Alerta.swift */,
 				6996CDE0265C422F00DB9198 /* FileManagerRefeicoes.swift */,
+				69A0D74426860AB4005B4DC4 /* RefeicoesDAO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				6955F63A26581EA400DA8B5F /* RemoveRefeicaoViewController.swift in Sources */,
 				69073E032652C0AF00886778 /* AppDelegate.swift in Sources */,
 				6996CDE1265C422F00DB9198 /* FileManagerRefeicoes.swift in Sources */,
+				69A0D74526860AB4005B4DC4 /* RefeicoesDAO.swift in Sources */,
 				695C73F126553FCD005E0655 /* RefeicoesTableViewController.swift in Sources */,
 				69073E052652C0AF00886778 /* SceneDelegate.swift in Sources */,
 				69B534B52655902200E806AA /* AdicionaItensViewController.swift in Sources */,

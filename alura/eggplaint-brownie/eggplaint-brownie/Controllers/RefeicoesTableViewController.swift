@@ -13,7 +13,7 @@ class RefeicoesTableViewController: UITableViewController, ViewControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let refeicoes = self.listaRefeicoes() else { return }
+        //guard let refeicoes = self.listaRefeicoes() else { return }
     }
 
     internal func addRefeicao(_ refeicao: Refeicao) {

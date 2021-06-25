@@ -20,28 +20,32 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableViewItens: UITableView?
     
     var items: [Item] = []
-    
-    
     var itemSelecionado: [Item] = []
     
     // MARK: - Attributes
     var delegate: ViewControllerDelegate?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewItens?.dataSource = self
         tableViewItens?.delegate = self
-        loadItems()
+        
         
         navigationItem.rightBarButtonItem = setButtonBarButton()
     }
     
-     @objc func addItem() {
-        let AddItemViewController = AdicionaItensViewController(delegate: self)
-        navigationController?.pushViewController(AddItemViewController, animated: true)
+    // MARK: - IBActions
+    @IBAction func adicionar(_ sender: Any) {
+        if let objRefeicao = recuperaRefeicaoDoFormulario() {
+            delegate?.addRefeicao(objRefeicao)
+            navigationController?.popViewController(animated: true)
+        }else{
+            Alerta(controller: self).exibe(mensagem: "Erro ao recuperar refeicao")
+            return
+        }
     }
-   
+    
+    // MARK - Funções
     private func recuperaRefeicaoDoFormulario() -> Refeicao? {
         guard let nome = txtNome?.text else {
             return nil
@@ -56,43 +60,23 @@ class ViewController: UIViewController {
         }
         
         if itemSelecionado.count == 0 {
+            Alerta(controller: self).exibe(mensagem: "Nenhum Item selecionado")
             return nil
         }
         
         let objRefeicao = Refeicao(nome: nome, felicidade: valueFelicidade, itens: itemSelecionado)
         return objRefeicao
-            
-    }
-    
-    // MARK: - IBActions
-    @IBAction func adicionar(_ sender: Any) {
-        if let objRefeicao = recuperaRefeicaoDoFormulario() {
-            delegate?.addRefeicao(objRefeicao)
-            navigationController?.popViewController(animated: true)
-        }else{
-            Alerta(controller: self).exibe(mensagem: "Erro ao recuperar refeicao")
-            return
-        }
-        
-    }
-    
-    func loadItems() {
-        guard let caminho = FileMangerRefeicoes.fileManagerPath(folderName: "itens") else { return }
-        
-        do {
-            let dados = try Data(contentsOf: caminho)
-            let itensSalvos = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados)
-            guard let itemsArray = itensSalvos as? Array<Item> else { return }
-            items = itemsArray
-        } catch {
-            print(error.localizedDescription)
-        }
     }
     
     func setButtonBarButton() -> UIBarButtonItem {
         let addItem = UIBarButtonItem(title: "adicionar", style: .plain , target: self, action: #selector(self.addItem))
         return addItem
     }
+   
+    @objc func addItem() {
+       let AddItemViewController = AdicionaItensViewController(delegate: self)
+       navigationController?.pushViewController(AddItemViewController, animated: true)
+   }
 }
 
 // MARK: - Extensions
@@ -129,15 +113,7 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: AdicionaItensDelegate {
     func addItens(_ item: Item) {
         items.append(item)
-        guard let caminho = FileMangerRefeicoes.fileManagerPath(folderName: "itens") else { return }
-        
-        do {
-            let dadosParaSalvar = try NSKeyedArchiver.archivedData(withRootObject: items, requiringSecureCoding: false)
-            try dadosParaSalvar.write(to: caminho)
-        } catch {
-            print(error.localizedDescription)
-        }
-        
+        RefeicoesDAO().saveItems(items)
         tableViewItens?.reloadData()
     }
     
@@ -147,5 +123,4 @@ extension ViewController: AdicionaItensDelegate {
         }
     }
 }
-
 
