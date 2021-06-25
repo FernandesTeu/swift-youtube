@@ -32,9 +32,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableViewItens?.dataSource = self
         tableViewItens?.delegate = self
+        loadItems()
         
-        let addItem = UIBarButtonItem(title: "adicionar", style: .plain , target: self, action: #selector(self.addItem))
-        navigationItem.rightBarButtonItem = addItem
+        navigationItem.rightBarButtonItem = setButtonBarButton()
     }
     
      @objc func addItem() {
@@ -75,6 +75,24 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    func loadItems() {
+        guard let caminho = FileMangerRefeicoes.fileManagerPath(folderName: "itens") else { return }
+        
+        do {
+            let dados = try Data(contentsOf: caminho)
+            let itensSalvos = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados)
+            guard let itemsArray = itensSalvos as? Array<Item> else { return }
+            items = itemsArray
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func setButtonBarButton() -> UIBarButtonItem {
+        let addItem = UIBarButtonItem(title: "adicionar", style: .plain , target: self, action: #selector(self.addItem))
+        return addItem
+    }
 }
 
 // MARK: - Extensions
@@ -111,6 +129,15 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: AdicionaItensDelegate {
     func addItens(_ item: Item) {
         items.append(item)
+        guard let caminho = FileMangerRefeicoes.fileManagerPath(folderName: "itens") else { return }
+        
+        do {
+            let dadosParaSalvar = try NSKeyedArchiver.archivedData(withRootObject: items, requiringSecureCoding: false)
+            try dadosParaSalvar.write(to: caminho)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         tableViewItens?.reloadData()
     }
     

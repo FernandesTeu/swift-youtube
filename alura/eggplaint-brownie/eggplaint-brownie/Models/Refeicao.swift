@@ -40,5 +40,4 @@ class Refeicao: NSObject, NSCoding {
 
         return mensagem
     }
-    
 }
